@@ -75,6 +75,11 @@ class GallerySaver {
     return result;
   }
 
+  // static const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+  // static Random _rnd = Random();
+  // static String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
+  //     length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
+
   static Future<File> _downloadFile(String url,
       {Map<String, String>? headers}) async {
     print(url);
@@ -86,7 +91,12 @@ class GallerySaver {
     }
     var bytes = req.bodyBytes;
     String dir = (await getTemporaryDirectory()).path;
-    File file = new File('$dir/${basename(url)}');
+    // const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+    var r = Random();
+    const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz';
+    var namem =  List.generate(12, (index) => _chars[r.nextInt(_chars.length)]).join();
+    // File file = new File('$dir/${basename(url)}');
+    File file = new File('$dir/$namem');
     await file.writeAsBytes(bytes);
     print('File size:${await file.length()}');
     print(file.path);
