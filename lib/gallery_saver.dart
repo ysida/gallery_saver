@@ -96,7 +96,7 @@ class GallerySaver {
     const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz';
     var namem =  List.generate(12, (index) => _chars[r.nextInt(_chars.length)]).join();
     // File file = new File('$dir/${basename(url)}');
-    File file = new File('$dir/$namem');
+    File file = new File('$dir/hii.mp4');
     await file.writeAsBytes(bytes);
     print('File size:${await file.length()}');
     print(file.path);
